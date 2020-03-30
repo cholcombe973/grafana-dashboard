@@ -1,0 +1,24 @@
+[package]
+name = "grafana-dashboard"
+authors = ["Ronni Skansing <rskansing@gmail.com>"]
+version = "0.0.0"
+description = "grafana import/export data serializable structures"
+documentation = "https://docs.rs/grafana-dashboard"
+readme = "readme.md"
+repository = "https://github.com/Ronniskansing/grafana-dashboard"
+license = "MIT"
+keywords = ["grafana"]
+categories = ["data-structures"]
+exclude = ["coverage/**/*"]
+edition = "2018"
+
+[dependencies]
+serde = { version = "1.0.105", features = ["derive"] }
+
+[dev-dependencies]
+serde_json = "1.0.50"
+pretty_assertions = "0.6.1"
+
+# update readme
+# cargo install cargo-readme
+# cargo readme > readme.md
