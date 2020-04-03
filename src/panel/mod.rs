@@ -52,7 +52,7 @@ pub mod alert {
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Condition {
         #[serde(skip_serializing_if = "Option::is_none")]
-        pub evaluator: Option<Evalurator>,
+        pub evaluator: Option<Evaluator>,
         #[serde(skip_serializing_if = "Option::is_none")]
         pub operator: Option<Operator>,
         #[serde(skip_serializing_if = "Option::is_none")]
@@ -64,7 +64,7 @@ pub mod alert {
     }
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Evalurator {
+    pub struct Evaluator {
         #[serde(skip_serializing_if = "Option::is_none")]
         pub params: Option<u32>,
         #[serde(skip_serializing_if = "Option::is_none")]
