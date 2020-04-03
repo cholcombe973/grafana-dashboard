@@ -48,7 +48,7 @@ pub struct Current {
     pub value: Option<String>,
 }
 
-mod options {
+pub mod options {
     use serde::{Deserialize, Serialize};
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Item {
