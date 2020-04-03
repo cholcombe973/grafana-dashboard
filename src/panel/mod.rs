@@ -3,6 +3,9 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Panel {
+    #[serde(rename = "aliasColors")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub alias_colors: Option<AliasColors>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub alert: Option<Alert>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -62,6 +65,18 @@ pub struct Panel {
     pub stepped_line: Option<bool>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub targets: Option<Vec<Target>>,
+    #[serde(rename = "timeFrom")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    // TODO unknown type, might not be string
+    pub time_from: Option<String>,
+    #[serde(rename = "timeRegion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    // TODO unknown type, might not be string
+    pub time_region: Option<TimeRegion>,
+    #[serde(rename = "timeShift")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    // TODO unknown type, might not be string
+    pub time_shift: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub thresholds: Option<Vec<Threshold>>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -75,7 +90,30 @@ pub struct Panel {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub title: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
+    pub tooltip: Option<ToolTip>,
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mode: Option<String>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct ToolTip {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub shared: Option<bool>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub sort: Option<u32>,
+    #[serde(rename = "valueType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub value_type: Option<String>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct TimeRegion {
+    // TODO add fields
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct AliasColors {
+    // TODO add fields
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
