@@ -82,7 +82,7 @@ pub struct Panel {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub xaxis: Option<Axis>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub yaxes: Option<Axe>,
+    pub yaxes: Option<Vec<Axe>>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub yaxis: Option<Axis>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -119,7 +119,7 @@ pub struct AliasColors {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Axis {
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub align: Option<String>,
+    pub align: Option<bool>,
     #[serde(rename = "alignLevel")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub align_level: Option<String>, // TODO correct type
