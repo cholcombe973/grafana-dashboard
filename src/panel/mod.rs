@@ -80,11 +80,11 @@ pub struct Panel {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub thresholds: Option<Vec<Threshold>>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub xaxis: Option<Vec<Axis>>,
+    pub xaxis: Option<Axis>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub yaxes: Option<Vec<Axe>>,
+    pub yaxes: Option<Axe>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub yaxis: Option<Vec<Axis>>,
+    pub yaxis: Option<Axis>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub r#type: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -131,7 +131,8 @@ pub struct Axis {
     pub name: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub show: Option<bool>,
-    pub values: Vec<AxisValue>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub values: Option<Vec<AxisValue>>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -156,7 +157,7 @@ pub struct Axe {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub min: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub show: Option<String>,
+    pub show: Option<bool>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
