@@ -23,8 +23,6 @@ use templating::Templating;
 pub struct Dashboard {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub annotations: Option<Annotations>,
-    // TODO what is autoUpdate?
-    // #[serde(rename = "autoUpdate")] -> auto_update: Option<?>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -34,31 +32,44 @@ pub struct Dashboard {
     #[serde(rename = "graphTooltip")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub graph_tooltip: Option<u32>,
+    #[serde(rename = "hideControls")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub hide_controls: Option<bool>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub id: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub links: Option<Vec<Link>>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub panels: Option<Vec<Panel>>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub id: Option<String>,
+    pub refresh: Option<String>,
+    #[serde(rename = "schemaVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub uid: Option<String>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub title: Option<String>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub tags: Option<Vec<String>>,
+    pub schema_version: Option<u32>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub style: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub timezone: Option<String>,
-    #[serde(rename = "hideControls")]
+    pub tags: Option<Vec<String>>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub hide_controls: Option<bool>,
+    pub templating: Option<Templating>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub time: Option<Time>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub timepicker: Option<TimePicker>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub templating: Option<Templating>,
+    pub timezone: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub title: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub uid: Option<String>,
+    pub variables: Vec<Variable>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub version: Option<u32>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct Variable {
+    // TODO fields
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]

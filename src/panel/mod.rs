@@ -6,18 +6,166 @@ pub struct Panel {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub alert: Option<Alert>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    r#type: Option<String>,
+    pub bars: Option<bool>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub title: Option<String>,
+    pub content: Option<String>,
+    #[serde(rename = "dashLength")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub dash_length: Option<u32>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub dashes: Option<bool>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub datasource: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub fill: Option<u32>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(rename = "fill_gradient")]
+    pub fill_gradient: Option<u32>,
     #[serde(rename = "gridPos")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub grid_pos: Option<GridPos>,
+    #[serde(rename = "hiddenSeries")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub hidden_series: Option<bool>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub id: Option<u32>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub mode: Option<String>,
+    pub legend: Option<Legend>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub content: Option<String>,
+    pub lines: Option<bool>,
+    #[serde(rename = "lineWidth")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub line_width: Option<u32>,
+    #[serde(rename = "nullPointMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub null_point_mode: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub options: Option<Vec<DataLink>>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub percentage: Option<bool>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub pointradius: Option<u32>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub points: Option<bool>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub renderer: Option<String>,
+    #[serde(rename = "seriesOverrides")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub series_overrides: Option<Vec<SeriesOverride>>,
+    #[serde(rename = "spaceLength")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub space_length: Option<u32>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub stack: Option<bool>,
+    #[serde(rename = "steppedLine")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub stepped_line: Option<bool>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub targets: Option<Vec<Target>>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub thresholds: Option<Vec<Threshold>>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub xaxis: Option<Vec<Axis>>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub yaxes: Option<Vec<Axe>>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub yaxis: Option<Vec<Axis>>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub r#type: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub title: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub mode: Option<String>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct Axis {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub align: Option<String>,
+    #[serde(rename = "alignLevel")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub align_level: Option<String>, // TODO correct type
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub buckets: Option<Vec<u32>>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub mode: Option<String>,
+    // nullable
+    pub name: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub show: Option<bool>,
+    pub values: Vec<AxisValue>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct AxisValue {
+    // TODO fields
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct Axe {
+    #[serde(rename = "$$hashKey")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub hash_key: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub format: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub label: Option<String>,
+    #[serde(rename = "logBase")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub log_base: Option<u32>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub max: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub min: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub show: Option<String>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct Threshold {
+    // TODO fields
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct Target {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub expr: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub interval: Option<String>,
+    #[serde(rename = "legendFormat")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub legend_format: Option<String>,
+    #[serde(rename = "refId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub ref_id: Option<String>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct SeriesOverride {
+    // TODO fields
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct DataLink {
+    // TODO fields
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct Legend {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub avg: Option<bool>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub current: Option<bool>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub max: Option<bool>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub min: Option<bool>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub show: Option<bool>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub total: Option<bool>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub values: Option<bool>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
