@@ -62,9 +62,14 @@ pub struct Dashboard {
     pub title: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub uid: Option<String>,
-    pub variables: Vec<Variable>,
+    pub variables: Variables,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub version: Option<u32>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct Variables {
+    list: Vec<Variable>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
