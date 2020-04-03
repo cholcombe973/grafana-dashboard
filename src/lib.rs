@@ -69,7 +69,7 @@ pub struct Dashboard {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Variables {
-    list: Vec<Variable>,
+    pub list: Vec<Variable>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -99,7 +99,7 @@ pub struct TimePicker {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub status: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    r#type: Option<String>,
+    pub r#type: Option<String>,
 }
 
 #[cfg(test)]
