@@ -72,7 +72,7 @@ pub struct Panel {
     #[serde(rename = "timeRegions")]
     #[serde(skip_serializing_if = "Option::is_none")]
     // TODO unknown type, might not be string
-    pub time_regions: Option<TimeRegion>,
+    pub time_regions: Option<Vec<TimeRegion>>,
     #[serde(rename = "timeShift")]
     #[serde(skip_serializing_if = "Option::is_none")]
     // TODO unknown type, might not be string
