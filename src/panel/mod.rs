@@ -1,7 +1,7 @@
 use alert::Alert;
 use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, Clone, Serialize, Deserialize)]
 pub struct Panel {
     #[serde(rename = "aliasColors")]
     #[serde(skip_serializing_if = "Option::is_none")]
